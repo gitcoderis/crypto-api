@@ -1,20 +1,25 @@
-<mat-accordion *ngIf="cryptos">
-  <mat-expansion-panel *ngFor="let crypto of objectKeys(cryptos.Data) | slice:0:10; let i = index">
+<mat-accordion *ngIf="cryptos" [@topCryptos]="topCryptos.length">
+  <!-- <mat-expansion-panel *ngFor="let crypto of objectKeys(cryptos.Data) | slice:0:10; let i = index"> -->
+  <mat-expansion-panel *ngFor="let crypto of topCryptos; let i = index">
     <mat-expansion-panel-header>
+      <mat-panel-title>
+      {{i+1}}
 
-      <mat-panel-title *ngIf="cryptos.Data[crypto].Id === topCryptos[1]">
+      </mat-panel-title>
+      <!-- <mat-panel-title *ngIf="cryptos.Data[crypto].Symbol === topCryptos[1]"> -->
+      <mat-panel-title class="crypto-name">
         <img class="crypto-icon" src="https://www.cryptocompare.com{{ cryptos.Data[crypto].ImageUrl }}" alt="chart" />
          <!-- {{ crypto }} -->
          {{ cryptos.Data[crypto].FullName }}
 
       </mat-panel-title>
 
-      <mat-panel-title>
+      <mat-panel-title class="crypto-price">
         <!-- {{ cryptos[crypto].USD | currency: 'USD':symbol }} -->
+        {{ coinInfo.DISPLAY[crypto].USD.PRICE}}
       </mat-panel-title>
-
-      <mat-panel-title>
-        24 val. pokytis: XX%
+      <mat-panel-title class="hide-sm" [ngClass]="{'red-text': coinInfo.RAW[crypto].USD.CHANGEPCT24HOUR < 0, 'green-text': coinInfo.RAW[crypto].USD.CHANGEPCT24HOUR > 0}">
+      {{ coinInfo.DISPLAY[crypto].USD.CHANGEPCT24HOUR }} % (24 val.)
       </mat-panel-title>
 
       <!-- <mat-panel-description>
@@ -23,7 +28,7 @@
     </mat-expansion-panel-header>
 
     <div class="more-info-container">
-      Daugiau info...
+      <p *ngFor="let info of objectEntries(coinInfo.DISPLAY[crypto].USD)">{{info}}</p>
     </div>
 
   </mat-expansion-panel>

@@ -6,8 +6,74 @@
   min-height: 100px;
 }
 
+
 .crypto-icon {
   margin-right: 5px;
   max-width: 20px;
   max-height: 20px;
+}
+
+.crypto-name {
+  max-width: 200px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.crypto-price {
+  max-width: 150px;
+  width: 100%;
+}
+
+.red-text {
+  color: red;
+}
+
+.green-text {
+  color: green;
+}
+
+@media only screen and (max-width: 630px) {
+    .hide-sm {
+      // display: none;
+    }
+    .crypto-name {
+      font-size: 12px;
+      max-width: 100px;
+
+    }
+    .crypto-price {
+      max-width: 100px;
+      width: 100%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .hide-sm {
+      font-size: 12px;
+
+    }
+    .crypto-name {
+      font-size: 12px;
+      max-width: 100px;
+
+    }
+    .crypto-price {
+      max-width: 100px;
+      width: 100%;
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    .hide-sm {
+      display: none;
+    }
+    .crypto-name {
+      font-size: 12px;
+      max-width: 100px;
+
+    }
+    .crypto-price {
+      max-width: 100px;
+      width: 100%;
+    }
 }

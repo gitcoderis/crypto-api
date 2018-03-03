@@ -17,8 +17,10 @@ export class DataService {
       .map(result => this.result = result);
   }
 
-  getCoinInfo(){
-    let url = "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC&tsyms=USD,EUR";
+  getCoinInfo(coinNames:string, currency:string){
+    //BTC,ETH,LTC,XRP,XLM,BCC,ADA,ETN,XMR,ETC
+    //USD
+    let url = "https://min-api.cryptocompare.com/data/pricemultifull?fsyms="+coinNames+"&tsyms="+currency;
     return this._http.get(url).map(result => this.result = result);
   }
 
